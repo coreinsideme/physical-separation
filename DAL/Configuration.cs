@@ -2,6 +2,8 @@
 
 using BLL.Interfaces;
 using DAL.Repositories;
+using DAL.Interfaces;
+using DAL.Services;
 
 namespace DAL
 {
@@ -10,8 +12,10 @@ namespace DAL
         public static void ConfigureService(this ServiceCollection services)
         {
             services
-                .AddSingleton<ICatalogRepository, CatalogRepository>()
-                .AddSingleton<IProductRepository, ProductRepository>();
+                .AddSingleton<ICategoryRepository, CategoryRepository>()
+                .AddSingleton<IProductRepository, ProductRepository>()
+                .AddSingleton<ICommandExecutor, CommandExecutor>()
+                .AddSingleton<IConnectionProvider, ConnectionProvider>();
         }
     }
 }

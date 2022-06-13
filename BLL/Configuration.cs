@@ -10,7 +10,7 @@ namespace BLL
         public static void ConfigureService(this ServiceCollection services)
         {
             services
-                .AddSingleton<ICatalogService, CatalogService>()
+                .AddSingleton<ICategoryService, CategoryService>()
                 .AddSingleton<IProductService, ProductService>();
         }
     }

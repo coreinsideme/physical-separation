@@ -7,12 +7,12 @@ using BLL.Entities;
 
 namespace BLL.Interfaces
 {
-    public interface ICatalogService
+    public interface ICategoryService
     {
-        Catalog Get(string name);
-        IReadOnlyCollection<Catalog> List();
-        void Add(Catalog catalog);
-        void Update(Catalog catalog);
+        Category Get(string name);
+        IReadOnlyCollection<Category> List();
+        void Add(Category catalog);
+        void Update(Category catalog);
         void Delete(string name);
     }
 }

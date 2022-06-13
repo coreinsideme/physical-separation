@@ -9,33 +9,33 @@ using BLL.Entities;
 
 namespace BLL.Services
 {
-    public class CatalogService: ICatalogService
+    public class CategoryService: ICategoryService
     {
-        private readonly ICatalogRepository _repository;
+        private readonly ICategoryRepository _repository;
 
-        public CatalogService(ICatalogRepository repository)
+        public CategoryService(ICategoryRepository repository)
         {
             this._repository = repository;
         }
 
-        public Catalog Get(string name)
+        public Category Get(string name)
         {
             ArgumentNullException.ThrowIfNull(name);
             return _repository.Get(name);
         }
 
-        public IReadOnlyCollection<Catalog> List()
+        public IReadOnlyCollection<Category> List()
         {
             return _repository.List();
         }
 
-        public void Add(Catalog catalog)
+        public void Add(Category catalog)
         {
             ArgumentNullException.ThrowIfNull(catalog);
             Upsert(catalog);
         }
 
-        public void Update(Catalog catalog)
+        public void Update(Category catalog)
         {
             ArgumentNullException.ThrowIfNull(catalog);
             Upsert(catalog);
@@ -47,7 +47,7 @@ namespace BLL.Services
             _repository.Delete(name);
         }
 
-        private void Upsert(Catalog catalog)
+        private void Upsert(Category catalog)
         {
             var duplicate = _repository.Get(catalog.Name);
 

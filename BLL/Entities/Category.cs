@@ -1,8 +1,8 @@
 ﻿namespace BLL.Entities
 {
-    public class Catalog
+    public class Category
     {
-        public Catalog(string name)
+        public Category(string name)
         {
             if (name is null || name.Length > 50)
             {
