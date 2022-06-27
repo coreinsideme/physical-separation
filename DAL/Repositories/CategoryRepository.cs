@@ -31,7 +31,7 @@ namespace DAL.Repositories
             var command = 
                 @$"
                     INSERT INTO categories
-                    VALUES ('{category.Name}', '{category.Image.AbsoluteUri}', '{category.ParentCategory}')
+                    VALUES ('{category.Name}', '{category.Image.AbsoluteUri}', '{category.ParentCategoryId}')
                 ";
             _commandExecutor.Execute(command);
         }
@@ -47,9 +47,9 @@ namespace DAL.Repositories
             _commandExecutor.Execute(command);
         }
 
-        public void Delete(string name)
+        public void Delete(int id)
         {
-            var command = $"DELETE from categories WHERE name = {name}";
+            var command = $"DELETE from categories WHERE id = {id}";
             _commandExecutor.Execute(command);
         }
 
@@ -58,6 +58,7 @@ namespace DAL.Repositories
             var command =
                 @"
                     CREATE TABLE categories (
+                        id integer,
                         name text,
                         image text,
                         categoryName text

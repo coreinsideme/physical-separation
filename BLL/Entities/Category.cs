@@ -1,6 +1,6 @@
 ﻿namespace BLL.Entities
 {
-    public class Category
+    public class Category: BaseEntity
     {
         public Category(string name)
         {
@@ -14,6 +14,6 @@
 
         public string Name { get; init; }
         public Uri Image { get; set; }
-        public string ParentCategory { get; set; }
+        public int  ParentCategoryId { get; set; }
     }
 }

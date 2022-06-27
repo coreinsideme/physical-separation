@@ -15,7 +15,7 @@ var productService = services.BuildServiceProvider()
     .GetService<IProductService>();
 
 // do everything we need with those services
-categoryService.Add(new Category("Hats") { Image = new Uri("http://www.github.com"), ParentCategory = "Clothes" });
+categoryService.Add(new Category("Hats") { Image = new Uri("http://www.github.com"), ParentCategoryId = 1 });
 var category = categoryService.Get("Hats");
-Console.WriteLine($"name: {category.Name}, image: {category.Image}, parent: {category.ParentCategory}");
+Console.WriteLine($"name: {category.Name}, image: {category.Image}, parent: {category.ParentCategoryId}");
 Console.ReadKey();

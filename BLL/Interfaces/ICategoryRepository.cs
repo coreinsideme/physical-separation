@@ -8,6 +8,6 @@ namespace BLL.Interfaces
         IReadOnlyCollection<Category> List();
         void Add(Category catalog);
         void Update(Category catalog);
-        void Delete(string name);
+        void Delete(int id);
     }
 }

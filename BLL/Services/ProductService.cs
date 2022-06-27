@@ -24,9 +24,9 @@ namespace BLL.Services
             return _repository.Get(name);
         }
 
-        public IReadOnlyCollection<Product> List()
+        public IReadOnlyCollection<Product> List(int id, int pageSize, int pageNumber)
         {
-            return _repository.List();
+            return _repository.List(id, pageSize, pageNumber);
         }
 
         public void Add(Product product)
@@ -41,10 +41,10 @@ namespace BLL.Services
             Upsert(product);
         }
 
-        public void Delete(string name)
+        public void Delete(int id)
         {
-            ArgumentNullException.ThrowIfNull(name);
-            _repository.Delete(name);
+            ArgumentNullException.ThrowIfNull(id);
+            _repository.Delete(id);
         }
 
         private void Upsert(Product product)

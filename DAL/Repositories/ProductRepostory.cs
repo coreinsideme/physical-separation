@@ -20,9 +20,9 @@ namespace DAL.Repositories
             return _commandExecutor.ExecuteSelect<Product>(command);
         }
 
-        public IReadOnlyCollection<Product> List()
+        public IReadOnlyCollection<Product> List(int id, int pageSize, int pageNumber)
         {
-            var command = $"SELECT * from products";
+            var command = $"SELECT * from products WHERE id = {id} LIMIT {pageSize} OFFSET {pageSize * pageNumber}";
             return _commandExecutor.ExecuteSelect<List<Product>>(command).AsReadOnly();
         }
 
@@ -31,7 +31,7 @@ namespace DAL.Repositories
             var command =
                 @$"
                     INSERT INTO products
-                    VALUES ('{product.Name}', '{product.Image}', '{product.Category}', '{product.Description}', '{product.Price}', '{product.Amount}')
+                    VALUES ('{product.Name}', '{product.Image}', '{product.CategoryId}', '{product.Description}', '{product.Price}', '{product.Amount}')
                 ";
             _commandExecutor.Execute(command);
         }
@@ -41,15 +41,15 @@ namespace DAL.Repositories
             var command =
                 @$"
                     UPDATE products 
-                    SET image = {product.Image}, category = {product.Category}, description = {product.Description}, price = {product.Price}, amount = {product.Amount}
+                    SET image = {product.Image}, category = {product.CategoryId}, description = {product.Description}, price = {product.Price}, amount = {product.Amount}
                     WHERE name = '{product.Name}'
                 ";
             _commandExecutor.Execute(command);
         }
 
-        public void Delete(string name)
+        public void Delete(int id)
         {
-            var command = $"DELETE from categories WHERE name = {name}";
+            var command = $"DELETE from categories WHERE id = {id}";
             _commandExecutor.Execute(command);
         }
 
@@ -58,9 +58,10 @@ namespace DAL.Repositories
             var command =
                 @"
                     CREATE TABLE products (
+                        id integer,
                         name text,
                         image text,
-                        category text,
+                        categoryId integer,
                         description text,
                         price real,
                         amount integer

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using BLL.Entities;
 
 namespace BLL.Services
@@ -41,10 +35,10 @@ namespace BLL.Services
             Upsert(catalog);
         }
 
-        public void Delete(string name)
+        public void Delete(int id)
         {
-            ArgumentNullException.ThrowIfNull(name);
-            _repository.Delete(name);
+            ArgumentNullException.ThrowIfNull(id);
+            _repository.Delete(id);
         }
 
         private void Upsert(Category catalog)

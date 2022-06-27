@@ -9,7 +9,7 @@ namespace DAL
 {
     public static class Configuration
     {
-        public static void ConfigureService(this ServiceCollection services)
+        public static void ConfigureService(this IServiceCollection services)
         {
             services
                 .AddSingleton<ICategoryRepository, CategoryRepository>()
