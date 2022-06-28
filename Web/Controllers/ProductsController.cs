@@ -7,7 +7,7 @@ using Web.Dtos;
 
 namespace Web.Controllers
 {
-    [Route("api/products")]
+    [Route("api")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -22,13 +22,13 @@ namespace Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public IActionResult ListProducts(int id, [FromQuery]int pageSize = 10, [FromQuery] int pageNumber = 0)
+        [HttpGet("categories/{categoryId}/products")]
+        public IActionResult ListProducts(int categoryId, [FromQuery]int pageSize = 10, [FromQuery] int pageNumber = 0)
         {
-            return Ok(_productService.List(id, pageSize, pageNumber));
+            return Ok(_productService.List(categoryId, pageSize, pageNumber));
         }
 
-        [HttpPost()]
+        [HttpPost("products")]
         public IActionResult AddProduct(ProductDto dto)
         {
             var product = _mapper.MapToEntity(dto);
@@ -37,7 +37,7 @@ namespace Web.Controllers
             return Ok();
         }
 
-        [HttpPut()]
+        [HttpPut("products")]
         public IActionResult UpdateProduct(ProductDto dto)
         {
             var product = _mapper.MapToEntity(dto);
@@ -46,10 +46,10 @@ namespace Web.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(int id)
+        [HttpDelete("products/{productId}")]
+        public IActionResult DeleteProduct(int productId)
         {
-            _productService.Delete(id);
+            _productService.Delete(productId);
 
             return Ok();
         }

@@ -1,4 +1,4 @@
-# Notes for Physical Later Separation Project
+# Notes for Physical Layer Separation Project
 
 ## TODO:
 
