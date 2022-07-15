@@ -4,6 +4,7 @@ using BLL.Interfaces;
 using BLL.Entities;
 using Web.Interfaces;
 using Web.Dtos;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -14,12 +15,14 @@ namespace Web.Controllers
         private readonly IProductService _productService;
         private readonly ILogger<ProductsController> _logger;
         private readonly IMapper<Product, ProductDto> _mapper;
+        private readonly IRabbitMQProducer _rabbitMQ;
 
-        public ProductsController(IProductService productService, ILogger<ProductsController> logger, IMapper<Product, ProductDto> mapper)
+        public ProductsController(IProductService productService, ILogger<ProductsController> logger, IMapper<Product, ProductDto> mapper, IRabbitMQProducer rabbitMQ)
         {
             _productService = productService;
             _logger = logger;
             _mapper = mapper;
+            _rabbitMQ = rabbitMQ;
         }
 
         [HttpGet("categories/{categoryId}/products")]
@@ -42,6 +45,7 @@ namespace Web.Controllers
         {
             var product = _mapper.MapToEntity(dto);
             _productService.Update(product);
+            _rabbitMQ.SendMessage(new PriceChangeModel { Name = dto.Name, Price = dto.Price });
 
             return Ok();
         }

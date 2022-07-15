@@ -1,6 +1,8 @@
 using Web.Interfaces;
 using Web.Dtos;
 using Web.Mappers;
+using Web.Models;
+using Web.Services;
 using BLL.Entities;
 
 
@@ -12,6 +14,9 @@ BLL.Configuration.ConfigureService(builder.Services);
 
 builder.Services.AddSingleton<IMapper<Product, ProductDto>, ProductMapper>();
 builder.Services.AddSingleton<IMapper<Category, CategoryDto>, CategoryMapper>();
+builder.Services.AddSingleton<IRabbitMQProducer, RabbitMQProducer>();
+
+builder.Services.Configure<RabbitMQConfiguration>(builder.Configuration.GetSection(RabbitMQConfiguration.SectionName));
 
 builder.Services.AddControllers();
 
