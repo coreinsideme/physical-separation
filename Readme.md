@@ -5,6 +5,7 @@
 - Implement data retrieving;
 - Implement parameters passing to DB queries;
 - Add test project;
+- Add Identity Management system usage;
 
 ## RabbitMQ
 
