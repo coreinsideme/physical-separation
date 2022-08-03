@@ -57,5 +57,16 @@ namespace Web.Controllers
 
             return Ok();
         }
+
+        [HttpGet("products/fake/{productId}")]
+        public IActionResult GetMockData(int productId)
+        {
+            return Ok(new {
+                Id = productId,
+                Name = "Nike Air Jordan",
+                CategoryName = "Shoes",
+                Price = 199
+            });
+        }
     }
 }
