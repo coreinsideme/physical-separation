@@ -3,6 +3,7 @@ using Web.Dtos;
 using Web.Mappers;
 using Web.Models;
 using Web.Services;
+using Web.Middlewares;
 using BLL.Entities;
 
 
@@ -21,6 +22,8 @@ builder.Services.Configure<RabbitMQConfiguration>(builder.Configuration.GetSecti
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.UseMiddleware<CorrelationIdMiddleware>();
 
 // Configure the HTTP request pipeline.
 
