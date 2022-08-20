@@ -14,7 +14,7 @@ namespace DAL.Repositories
             CreateTable();
         }
 
-        public Product Get(string name)
+        public Product GetProduct(string name)
         {
             var command = $"SELECT * from products WHERE name = '{name}'";
             return _commandExecutor.ExecuteSelect<Product>(command);

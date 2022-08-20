@@ -14,7 +14,7 @@ namespace DAL.Repositories
             CreateTable();
         }
 
-        public Category Get(string name)
+        public Category GetProduct(string name)
         {
             var command = $"SELECT * from categories WHERE name = '{name}'";
             return _commandExecutor.ExecuteSelect<Category>(command);

@@ -6,7 +6,7 @@
         {
             if (name is null || name.Length > 50)
             {
-                throw new ArgumentException(nameof(name));
+                throw new ArgumentException($"{nameof(name)} should not be empty and it length should be more than 50 symbols");
             }
 
             Name = name;

@@ -4,7 +4,7 @@ namespace BLL.Interfaces
 {
     public interface ICategoryRepository
     {
-        Category Get(string name);
+        Category GetProduct(string name);
         IReadOnlyCollection<Category> List();
         void Add(Category catalog);
         void Update(Category catalog);

@@ -1,10 +1,10 @@
-using Web.Interfaces;
+using BLL.Entities;
 using Web.Dtos;
+using Web.Interfaces;
 using Web.Mappers;
+using Web.Middlewares;
 using Web.Models;
 using Web.Services;
-using Web.Middlewares;
-using BLL.Entities;
 
 
 var builder = WebApplication.CreateBuilder(args);

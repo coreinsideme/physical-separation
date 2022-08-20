@@ -18,10 +18,10 @@ namespace BLL.Services
             this._repository = repository;
         }
 
-        public Product Get(string name)
+        public Product GetProduct(string name)
         {
             ArgumentNullException.ThrowIfNull(name);
-            return _repository.Get(name);
+            return _repository.GetProduct(name);
         }
 
         public IReadOnlyCollection<Product> List(int id, int pageSize, int pageNumber)
@@ -49,7 +49,7 @@ namespace BLL.Services
 
         private void Upsert(Product product)
         {
-            var duplicate = _repository.Get(product.Name);
+            var duplicate = _repository.GetProduct(product.Name);
 
             if (duplicate is not null) { _repository.Update(product); }
 

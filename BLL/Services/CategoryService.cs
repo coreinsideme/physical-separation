@@ -15,7 +15,7 @@ namespace BLL.Services
         public Category Get(string name)
         {
             ArgumentNullException.ThrowIfNull(name);
-            return _repository.Get(name);
+            return _repository.GetProduct(name);
         }
 
         public IReadOnlyCollection<Category> List()
@@ -43,7 +43,7 @@ namespace BLL.Services
 
         private void Upsert(Category catalog)
         {
-            var duplicate = _repository.Get(catalog.Name);
+            var duplicate = _repository.GetProduct(catalog.Name);
 
             if (duplicate is not null) { _repository.Update(catalog); }
 

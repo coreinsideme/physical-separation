@@ -4,7 +4,7 @@ namespace BLL.Interfaces
 {
     public interface IProductService
     {
-        Product Get(string name);
+        Product GetProduct(string name);
         IReadOnlyCollection<Product> List(int id, int pageSize, int pageNumber);
         void Add(Product catalog);
         void Update(Product catalog);
